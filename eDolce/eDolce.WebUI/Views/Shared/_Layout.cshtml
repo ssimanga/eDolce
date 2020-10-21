@@ -23,11 +23,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">@Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Products", "Index", "ProductManager", new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Categories", "Index", "ProductCategoryManager", new { @class = "nav-link" })</li>
+                <li class="nav-item active">@Html.ActionLink("Home", "Index", "Home",new { hidefocus="hidefocus"}, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { hidefocus="hidefocus"}, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { hidefocus = "hidefocus" }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Products", "Index", "ProductManager", new { hidefocus = "hidefocus" }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Categories", "Index", "ProductCategoryManager",new { hidefocus="hidefocus"}, new { @class = "nav-link" })</li>
 
             </ul>
             @Html.Partial("_LoginPartial")

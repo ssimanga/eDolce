@@ -175,6 +175,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -343,6 +344,10 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\ProductManager\Index.cshtml" />
+    <Content Include="Views\ProductManager\Create.cshtml" />
+    <Content Include="Views\ProductManager\Edit.cshtml" />
+    <Content Include="Views\ProductManager\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -357,6 +362,24 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eDolce.Core\eDolce.Core.csproj">
+      <Project>{f71a4925-cb95-41c3-bf6d-d17c7dedc1b9}</Project>
+      <Name>eDolce.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eDolce.DataAccess.InMemory\eDolce.DataAccess.InMemory.csproj">
+      <Project>{8579e086-2473-4463-a58b-8f769f8f5037}</Project>
+      <Name>eDolce.DataAccess.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eDolce.DataAccess.SQL\eDolce.DataAccess.SQL.csproj">
+      <Project>{984e9d8e-78cf-4d07-960b-b04d3f9274e0}</Project>
+      <Name>eDolce.DataAccess.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eDolce.Services\eDolce.Services.csproj">
+      <Project>{9fea0dc1-8c42-4cbd-a8d4-7d1dd4066115}</Project>
+      <Name>eDolce.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
