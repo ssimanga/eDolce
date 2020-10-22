@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using eDolce.Core.Models;
+using eDolce.Core.ViewModels;
 using eDolce.DataAccess.InMemory;
 
 namespace eDolce.WebUI.Controllers
@@ -11,9 +12,11 @@ namespace eDolce.WebUI.Controllers
     public class ProductManagerController : Controller
     {
         ProductRepository context;
+        ProductCategoryRepository productCategories;
         public ProductManagerController()
         {
             context = new ProductRepository();
+            productCategories = new ProductCategoryRepository();
         }
         // GET: ProductManager
         public ActionResult Index()
@@ -24,8 +27,10 @@ namespace eDolce.WebUI.Controllers
 
         public ActionResult Create()
         {
+            ProductViewModel viewModel = new ProductViewModel();
             Product product = new Product();
-            return View(product);
+            viewModel.productCategories = productCategories.Collection();
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -52,7 +57,10 @@ namespace eDolce.WebUI.Controllers
             }
             else
             {
-                return View(product);
+                ProductViewModel viewModel = new ProductViewModel();
+                viewModel.Product = product;
+                viewModel.productCategories = productCategories.Collection();
+                return View(viewModel);
             }
         }
         [HttpPost]
