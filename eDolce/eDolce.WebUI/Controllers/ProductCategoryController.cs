@@ -1,4 +1,5 @@
-﻿using eDolce.Core.Models;
+﻿using eDolce.Core.Contracts;
+using eDolce.Core.Models;
 using eDolce.DataAccess.InMemory;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,10 @@ namespace eDolce.WebUI.Controllers
     public class ProductCategoryController : Controller
     {
 
-        ProductCategoryRepository context;
-        public ProductCategoryController()
+        IRepository<ProductCategory> context;
+        public ProductCategoryController(IRepository<ProductCategory> repository)
         {
-            context = new ProductCategoryRepository();
+            this.context = repository;
         }
 
         // GET: ProductCategory

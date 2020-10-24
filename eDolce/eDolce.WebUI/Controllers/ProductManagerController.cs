@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using eDolce.Core.Contracts;
 using eDolce.Core.Models;
 using eDolce.Core.ViewModels;
 using eDolce.DataAccess.InMemory;
@@ -11,12 +12,13 @@ namespace eDolce.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
-        ProductRepository context;
-        ProductCategoryRepository productCategories;
-        public ProductManagerController()
+        IRepository<Product> context;
+        IRepository<ProductCategory> productCategories;
+    
+        public ProductManagerController(IRepository<Product> productContext, IRepository<ProductCategory> productCatgoryContext)
         {
-            context = new ProductRepository();
-            productCategories = new ProductCategoryRepository();
+            context = productContext;
+            productCategories = productCatgoryContext;
         }
         // GET: ProductManager
         public ActionResult Index()
