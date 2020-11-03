@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -36,7 +37,7 @@ namespace eDolce.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Product product, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
@@ -44,6 +45,11 @@ namespace eDolce.WebUI.Controllers
             }
             else
             {
+                if(file != null)
+                {
+                    product.Image = product.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//ProductUploads//" + product.Image));
+                }
                 context.Insert(product);
                 context.Commit();
                 return RedirectToAction("Index");
@@ -66,7 +72,7 @@ namespace eDolce.WebUI.Controllers
             }
         }
         [HttpPost]
-        public ActionResult edit(Product product, string Id)
+        public ActionResult edit(Product product, string Id, HttpPostedFileBase file)
         {
             Product productToEdit = context.Find(Id);
             if (product == null)
@@ -79,9 +85,13 @@ namespace eDolce.WebUI.Controllers
                 {
                     return View(product);
                 }
+                if(file != null)
+                {
+                    productToEdit.Image = product.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//ProductUploads//" + productToEdit.Image));
+                }
                 productToEdit.Category = product.Category;
                 productToEdit.Description = product.Description;
-                productToEdit.Image = product.Image;
                 product.Name = product.Name = product.Name;
                 productToEdit.Price = product.Price;
                 context.Commit();

@@ -24,7 +24,7 @@
             @Html.DisplayNameFor(model => model.Category)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Image)
+           
         </th>
         <th></th>
     </tr>
@@ -44,8 +44,9 @@
             @Html.DisplayFor(modelItem => item.Category)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Image)
+           <img class="" src="~/Content/ProductUploads/@item.Image" />
         </td>
+ 
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
@@ -54,3 +55,9 @@
 }
 
 </table>
+<style>
+    img {
+        width: 80px;
+        height: 80px;
+    }
+</style>
