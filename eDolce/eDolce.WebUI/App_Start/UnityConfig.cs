@@ -1,6 +1,7 @@
 using eDolce.Core.Contracts;
 using eDolce.Core.Models;
 using eDolce.DataAccess.InMemory;
+using eDolce.DataAccess.SQL;
 using System;
 
 using Unity;
@@ -45,8 +46,8 @@ namespace eDolce.WebUI
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<IRepository<Product>, InMemoryRespository<Product>>();
-            container.RegisterType<IRepository<ProductCategory>, InMemoryRespository<ProductCategory>>();
+            container.RegisterType<IRepository<Product>, SQLRepository<Product>>();
+            container.RegisterType<IRepository<ProductCategory>, SQLRepository<ProductCategory>>();
         }
     }
 }
