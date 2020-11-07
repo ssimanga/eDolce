@@ -2,6 +2,7 @@ using eDolce.Core.Contracts;
 using eDolce.Core.Models;
 using eDolce.DataAccess.InMemory;
 using eDolce.DataAccess.SQL;
+using eDolce.Services;
 using System;
 
 using Unity;
@@ -48,6 +49,9 @@ namespace eDolce.WebUI
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IRepository<Product>, SQLRepository<Product>>();
             container.RegisterType<IRepository<ProductCategory>, SQLRepository<ProductCategory>>();
+            container.RegisterType<IRepository<Cart>, SQLRepository<Cart>>();
+            container.RegisterType<IRepository<CartItem>, SQLRepository<CartItem>>();
+            container.RegisterType<ICartService, CartService>();
         }
     }
 }
