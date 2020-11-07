@@ -1,22 +1,23 @@
-﻿@model IEnumerable<eDolce.Core.Models.Product>
+﻿@model eDolce.Core.ViewModels.ProductListingViewModel
 @{
     ViewBag.Title = "Home Page";
 }
 
 <div class="row">
     <div class="col-md-3 mt-5">
-        <ul>
-            <li>Category 1</li>
-            <li>Category 1</li>
-            <li>Category 1</li>
-            <li>Category 1</li>
-        </ul>
+        <div class="list-group">
+            @Html.ActionLink("All Products", "Index", null, new { @class = Request["Category"] == null? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action" })
+            @foreach(var category in Model.ProductCategories)
+            {
+                @Html.ActionLink(category.Category, "Index", new { Category = category.Category}, new { @class = Request["Category"] == null? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action" })
+           }
+        </div>
     </div>
     <div class="col-md-9">
     <div class="container mt-5">
         <div class="row">
-            @foreach (var item in Model)
-            {
+            @foreach (var item in Model.Products)
+                    {
 
                 <div class="col-md-3">
                     <img class="figure-img" src="~/Content/ProductUploads/@item.Image" />

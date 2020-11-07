@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace eDolce.Core.ViewModels
 {
-    class ProductListingViewModel
+    public class ProductListingViewModel
     {
         public IEnumerable<Product> Products { get; set; }
         public IEnumerable<ProductCategory> ProductCategories { get; set; }
