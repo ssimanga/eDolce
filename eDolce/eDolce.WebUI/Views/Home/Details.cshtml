@@ -15,7 +15,7 @@
         <h6>  @Html.DisplayFor(model => model.Name)</h6>
         <p>@Html.DisplayFor(model => model.Description)</p>
         <div>
-            <a href="#" class="btn btn-outline-info">Add To Cart</a>
+            <a href="@Url.Action("addToCart","Cart", new { Id = Model.Id})" class="btn btn-outline-primary"><i class="fa fa-cart-plus"></i></a>
         </div>
         <p>
 

@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -31,10 +32,9 @@
 
             </ul>
             @Html.Partial("_LoginPartial")
-            <form action="" class="form-inline my-2 my-lg-0">
-                <input type="search" class="form-control mr-sm-2" placeholder="search...">
-                <button class="btn btn-outline-success my-2 my-sm-0">GO</button>
-            </form>
+            @{
+                Html.RenderAction("CartSummary", "Cart");
+            }
         </div>
     </nav>
     <div class="container body-content">

@@ -25,7 +25,7 @@
                     <div class="text-info"><strong>R @item.Price</strong></div>
                     @*<p>@item.Description</p>*@
                     <div>
-                        <a href="#" class="btn btn-outline-primary">Add to Cart</a>
+                        <a href="@Url.Action("addToCart","Cart", new { Id = item.Id})" class="btn btn-outline-primary"><i class="fa fa-cart-plus"></i></a>
                     </div>
                 </div>
 
