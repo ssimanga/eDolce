@@ -381,6 +381,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\ProductUploads\" />
+    <Folder Include="Views\Student\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
