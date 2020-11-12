@@ -15,8 +15,7 @@ namespace eDolce.WebUI.Tests.Mocks
 
         public MockContext()
         {
-           
-             items = new List<T>();
+            items = new List<T>();
         }
 
         public void Commit()
@@ -32,19 +31,28 @@ namespace eDolce.WebUI.Tests.Mocks
         public void Update(T t)
         {
             T tToUpdate = items.Find(i => i.Id == t.Id);
+
             if (tToUpdate != null)
+            {
                 tToUpdate = t;
+            }
             else
-                throw new Exception(className + " Not Found");
+            {
+                throw new Exception(className + " Not found");
+            }
         }
 
         public T Find(string Id)
         {
             T t = items.Find(i => i.Id == Id);
             if (t != null)
+            {
                 return t;
+            }
             else
+            {
                 throw new Exception(className + " Not Found");
+            }
         }
 
         public IQueryable<T> Collection()
@@ -55,10 +63,15 @@ namespace eDolce.WebUI.Tests.Mocks
         public void Delete(string Id)
         {
             T tToDelete = items.Find(i => i.Id == Id);
+
             if (tToDelete != null)
+            {
                 items.Remove(tToDelete);
+            }
             else
-                throw new Exception(className + " Not Found");
+            {
+                throw new Exception(className + " Not found");
+            }
         }
     }
 }

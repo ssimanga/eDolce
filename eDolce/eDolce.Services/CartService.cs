@@ -18,8 +18,9 @@ namespace eDolce.Services
 
         public CartService(IRepository<Product> ProductContext, IRepository<Cart> CartContext)
         {
-            this.productContext = ProductContext;
             this.cartContext = CartContext;
+            this.productContext = ProductContext;
+            
         }
 
         private Cart GetCart(HttpContextBase httpContext, bool createIFNull)
@@ -136,6 +137,12 @@ namespace eDolce.Services
             {
                 return model;
             }
+        }
+        public void ClearCart(HttpContextBase httpContext)
+        {
+            Cart cart = GetCart(httpContext, false);
+            cart.CartItems.Clear();
+            cartContext.Commit();
         }
     }
 }
