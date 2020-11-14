@@ -10,12 +10,14 @@ namespace eDolce.WebUI.Controllers
 {
     public class CartController : Controller
     {
+        IRepository<Customer> customers;
         ICartService cartService;
         IOrderService orderService;
-        public CartController(ICartService CartService, IOrderService orderService)
+        public CartController(ICartService CartService, IOrderService orderService, IRepository<Customer> Customers)
         {
             this.cartService = CartService;
             this.orderService = orderService;
+            this.customers = Customers;
         }
         // GET: Cart
         public ActionResult Index()
@@ -41,9 +43,29 @@ namespace eDolce.WebUI.Controllers
             var cartSummary = cartService.GetCartSummary(this.HttpContext);
             return PartialView(cartSummary);
         }
+        [Authorize]
         public ActionResult Checkout()
         {
-            return View();
+            Customer customer = customers.Collection().FirstOrDefault(c => c.Email == User.Identity.Name);
+            if(customer != null)
+            {
+                Order order = new Order()
+                {
+                    Email = customer.Email,
+                    City = customer.City,
+                    State = customer.State,
+                    Street = customer.Street,
+                    FirstName = customer.FirstName,
+                    Surname = customer.LastName,
+                    ZipCode = customer.ZipCode
+                };
+                return View(order);
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+            
         }
 
         [HttpPost]
