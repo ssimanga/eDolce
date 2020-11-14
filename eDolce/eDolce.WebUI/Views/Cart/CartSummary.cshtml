@@ -1,6 +1,11 @@
 ﻿@model eDolce.Core.ViewModels.CartSummaryViewModel
 
 <ul class="navbar navbar-nav text-right">
-    <li class="mr-2"><a href="@Url.Action("Index", "Cart")">@Model.CartCount <i class="fa fa-shopping-cart text-info"></i></a></li>
+    <li class="mr-2"><a href="@Url.Action("Index", "Cart")">
+    
+    <i class="fa fa-shopping-cart text-info"></i>
+    <span class="badge badge-light">@Model.CartCount</span>
+</a>
+    </li>
     <li><a href="@Url.Action("Index", "Cart")">@String.Format("{0:c}", Model.CartTotal)</a></li>
 </ul>
