@@ -18,6 +18,8 @@ namespace eDolce.WebUI.Controllers
 
         public ManageController()
         {
+            
+
         }
 
 

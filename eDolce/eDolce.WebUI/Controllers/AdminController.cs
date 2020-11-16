@@ -9,7 +9,7 @@ namespace eDolce.WebUI.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View();

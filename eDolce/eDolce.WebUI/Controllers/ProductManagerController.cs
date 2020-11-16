@@ -11,6 +11,7 @@ using eDolce.DataAccess.InMemory;
 
 namespace eDolce.WebUI.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class ProductManagerController : Controller
     {
         IRepository<Product> context;
@@ -71,6 +72,7 @@ namespace eDolce.WebUI.Controllers
                 return View(viewModel);
             }
         }
+
         [HttpPost]
         public ActionResult edit(Product product, string Id, HttpPostedFileBase file)
         {

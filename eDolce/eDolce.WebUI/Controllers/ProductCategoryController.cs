@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace eDolce.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductCategoryController : Controller
     {
 
